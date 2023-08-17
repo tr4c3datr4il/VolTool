@@ -48,7 +48,7 @@ class VolRecon:
         base_config_path = "plugins"
         plugin_names = ["windows.pstree.PsTree", "windows.cmdline.CmdLine", 
                        "windows.netscan.NetScan", "windows.filescan.FileScan"]
-        image_path = self.handlePath(image_path)
+        image_path = self.handlePath(image_path, output_path)
         for p in plugin_names:
             print(f"{p.split('.')[1].upper()} starting...")
             plugin = plugin_list[p]
@@ -63,7 +63,10 @@ class VolRecon:
                 self.prettyPrint(constructed, output_file, verbose)
     
     # Convert normal path to URL path
-    def handlePath(self, image_path):
+    def handlePath(self, image_path, output_path):
+        if not (os.path.exists(output_path)):
+            os.makedirs(output_path)
+        
         if image_path.startswith("./") or image_path.startswith("../") or image_path.startswith(""):
             abs_path = os.path.abspath(image_path)
             file_url = "file://" + abs_path
