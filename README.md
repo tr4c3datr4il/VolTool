@@ -39,6 +39,8 @@ options:
 
 Automatic dumping given PID list or offset list, using PsList, Memmap and DumpFiles to dump.
 
+**Usage**
+
 ```
 $ chmod +x ./VolAutoDump.py
 $ sudo cp ./VolAutoDump.py /usr/bin
