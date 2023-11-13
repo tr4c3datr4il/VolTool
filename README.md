@@ -12,14 +12,12 @@ Tools related to Volatility
 
 Automatic parsing Pstree, Cmdline, Netscan, Filescan to files.
 
-
-
 **Usage**
 
 ```
 $ chmod +x ./VolRecon.py
 $ sudo cp ./VolRecon.py /usr/bin
-$ ./VolRecon.py -h                         
+$ VolRecon.py -h                         
 usage: VolRecon.py [-h] -p <PATH> -o <OUTPUT_PATH> [-v] [-csv]
 
 Automatic Parsing Volatility Intels Tool
@@ -44,7 +42,7 @@ Automatic dumping given PID list or offset list, using PsList, Memmap and DumpFi
 ```
 $ chmod +x ./VolAutoDump.py
 $ sudo cp ./VolAutoDump.py /usr/bin
-$ ./VolAutoDump.py -h                                                                                                                        
+$ VolAutoDump.py -h
 usage: VolAutoDump.py [-h] -p <PATH> -o <OUTPUT_PATH> [-v] [-csv] {filedump,procdump,memmap} ...
 
 Automatic Dumping Volatility Tool
