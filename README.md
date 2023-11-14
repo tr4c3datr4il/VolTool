@@ -63,6 +63,27 @@ options:
   -csv                  Write to csv files
 ```
 
+## VolGraph 
+
+Draw Process Tree to png file.
+
+**Usage**
+
+```
+$ chmod +x ./VolGraph.py
+$ sudo cp ./VolGraph.py /usr/bin
+$ VolGraph.py -h                                                         
+usage: VolGraph.py [-h] -p <PATH> -o <OUTPUT_PATH>
+
+Draw Process Tree Tool
+
+options:
+  -h, --help            show this help message and exit
+  -p <PATH>, --path <PATH>
+                        Path to the memory image
+  -o <OUTPUT_PATH>, --output_path <OUTPUT_PATH>
+                        Out files folder
+```
 
 
 ### TO-DO List:
