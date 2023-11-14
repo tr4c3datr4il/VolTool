@@ -15,7 +15,7 @@ volatility3.framework.require_interface_version(2, 0, 0)
 
     
 class PsScan:
-    def __init__(self, image_path, output_path):
+    def __init__(self, image_path, output_path, file_name="graph"):
         ctx = contexts.Context()
         failures = volatility3.framework.import_files(volatility3.plugins, True)  # Load plugins
         if failures:
@@ -35,7 +35,7 @@ class PsScan:
         
         constructed = self.buildContext(ctx, base_config_path, image_path, plugin)
         pslist = self.getPsList(constructed, output_path)
-        self.drawGraph(output_path, pslist)
+        self.drawGraph(output_path, pslist, file_name)
         
     # Convert normal path to URL path
     def handlePath(self, image_path, output_path):
@@ -72,7 +72,7 @@ class PsScan:
 
         return pslist.splitlines()
 
-    def drawGraph(self, output_path, pslist):
+    def drawGraph(self, output_path, pslist, file_name):
         HEADER = pslist[0]
         proc_list = pslist[1:]
         LABEL_FORMAT = "{} | {} | {}"
@@ -105,20 +105,22 @@ class PsScan:
                          fillcolor = 'lightgray')
             
         dot.edges(edges)
-        dot.render(f'{output_path}/testing_hihi',format='png', cleanup=True)
+        dot.render(f'{output_path}/{file_name}',format='png', cleanup=True)
     
 def main():
     parser = argparse.ArgumentParser(description="Draw Process Tree Tool")
     
     parser.add_argument("-p", "--path", metavar="<PATH>", help="Path to the memory image", required=True)
     parser.add_argument("-o", "--output_path", metavar="<OUTPUT_PATH>", help="Out files folder", required=True)
+    parser.add_argument("-n", "--name", metavar="<OUTPUT_NAME>", help="Graph file's name")
     
     args = parser.parse_args()
     
     image_path = args.path
     output_path = args.output_path
+    file_name = args.name
     
-    PsScan(image_path, output_path)
+    PsScan(image_path, output_path, file_name)
     
 if __name__=='__main__':
     main()
