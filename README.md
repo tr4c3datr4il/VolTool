@@ -69,6 +69,8 @@ Draw Process Tree to png file.
 
 **Usage**
 
+Install graphiz module first: `pip install graphiz`
+
 ```
 $ chmod +x ./VolGraph.py
 $ sudo cp ./VolGraph.py /usr/bin
